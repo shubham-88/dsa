@@ -1,4 +1,4 @@
-package programs;
+package dsa;
 
 import java.util.ArrayList;
 import java.util.List;

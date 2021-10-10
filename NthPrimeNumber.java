@@ -1,4 +1,4 @@
-package programs;
+package dsa;
 
 public class NthPrimeNumber {
 
