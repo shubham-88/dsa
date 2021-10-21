@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 public class QuickSort {
 
 	public static void main(String[] args) {
-		int[] input = { 4, 1, 2, 3, 5, 0, 2 };
+		int[] input = { -4, -1, 0, 3, 10 };
 		int fin = 0;
 		int lin = input.length - 1;
 		IntStream.of(input).forEach(System.out::print);
@@ -13,6 +13,7 @@ public class QuickSort {
 		System.out.println();
 		IntStream.of(input).forEach(System.out::print);
 	}
+
 
 	private static void quickSort(int[] input, int fin, int lin) {
 		if (fin < lin) {
@@ -24,15 +25,15 @@ public class QuickSort {
 
 	private static int partIndex(int[] input, int fin, int lin) {
 		int pivot = lin;
-		int i = fin - 1;
+		int i = fin;
 		for (int j = fin; j < lin; j++) {
 			if (input[j] <= input[pivot]) {
-				i++;
 				swap(input, i, j);
+				i++;
 			}
 		}
-		swap(input, i + 1, pivot);
-		return i + 1;
+		swap(input, i, pivot);
+		return i;
 	}
 
 	private static void swap(int[] input, int i, int j) {
