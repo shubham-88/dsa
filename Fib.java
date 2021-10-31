@@ -9,11 +9,10 @@ public class Fib {
 		int init = 0;
 		int first = 0;
 		int second = 1;
-		System.out.print(first + second);
-		while (init <= n) {
+		while (init < n) {
 			int _new = first + second;
 
-			System.out.print(_new);
+			System.out.print(_new +" ");
 
 			first = second;
 			second = _new;

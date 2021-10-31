@@ -1,6 +1,7 @@
 package dsa;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class ReverseALinkedList {
@@ -27,7 +28,7 @@ public class ReverseALinkedList {
 		ll.add(3);
 		ll.add(4);
 		ll.add(5);
-		
+
 		Collections.reverseOrder();
 	}
 
@@ -50,6 +51,39 @@ public class ReverseALinkedList {
 		}
 		return root = prev;
 
+	}
+
+	void detectLoop(Node root) {
+		Node slow_p = root, fast_p = root;
+		int flag = 0;
+		while (slow_p != null && fast_p != null && fast_p.next != null) {
+			slow_p = slow_p.next;
+			fast_p = fast_p.next.next;
+			if (slow_p == fast_p) {
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1)
+			System.out.println("Loop found");
+		else
+			System.out.println("Loop not found");
+	}
+
+	static boolean removeLoop(Node h) {
+		HashSet<Node> s = new HashSet<Node>();
+		Node prev = null;
+		while (h != null) {
+			if (s.contains(h)) {
+				prev.next = null;
+				return true;
+			} else {
+				s.add(h);
+				prev = h;
+				h = h.next;
+			}
+		}
+		return false;
 	}
 
 	static class Node {

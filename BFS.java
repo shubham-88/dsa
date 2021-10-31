@@ -22,6 +22,9 @@ public class BFS {
 		root.right = parent.new Node(11);
 		root.left.left = parent.new Node(7);
 		root.left.right = parent.new Node(9);
+		
+		PrintLeafNodes(root,2);
+		System.out.println("################");
 
 		// bfs
 
@@ -36,6 +39,22 @@ public class BFS {
 				q.add(child.right);
 		}
 
+	}
+
+	static void PrintLeafNodes(Node root, int level) {
+		if (root == null) {
+			return;
+		}
+
+		if (level == 1) {
+			if (root.left == null && root.right == null) {
+				System.out.print(root.value + " ");
+			}
+
+		} else if (level > 1) {
+			PrintLeafNodes(root.left, level - 1);
+			PrintLeafNodes(root.right, level - 1);
+		}
 	}
 
 }

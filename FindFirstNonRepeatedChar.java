@@ -13,12 +13,17 @@ public class FindFirstNonRepeatedChar {
 		str.chars().mapToObj(c -> (char) c).forEach(c -> System.out.println(c));
 		str.codePoints().forEach(c -> System.out.println(c));
 
-		//problem code
+		// problem code
 		Map<String, Long> dataMap = str.chars().mapToObj(c -> String.valueOf((char) c))
 				.collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
 
 		Map.Entry<String, Long> result = dataMap.entrySet().stream().filter(e -> e.getValue() == 1L).findFirst()
 				.orElse(null);
+
+		Map<Character, Long> res = str.chars().mapToObj(i -> (char) i)
+				.collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+		System.out.println(res);
+
 		if (result == null) {
 			System.out.println("None");
 		} else {
